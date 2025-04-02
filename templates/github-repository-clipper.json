@@ -1,0 +1,58 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "GitHub Repository",
+	"behavior": "create",
+	"noteContentFormat": "**About:** {{selector:.Layout-sidebar p|first}}\n\n## README\n\n{{selectorHtml:article|markdown}}\n\n",
+	"properties": [
+		{
+			"name": "created",
+			"value": "{{time|date:\\\"YYYY-MM-DDTHH:mm:ssZ\\\"}}",
+			"type": "date"
+		},
+		{
+			"name": "reviewed",
+			"value": "",
+			"type": "datetime"
+		},
+		{
+			"name": "url",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "title",
+			"value": "{{selector:#repo-title-component a}}",
+			"type": "text"
+		},
+		{
+			"name": "owner",
+			"value": "{{meta:name:octolytics-dimension-user_login}}",
+			"type": "text"
+		},
+		{
+			"name": "website",
+			"value": "{{selector:.Layout-sidebar a?href|first}}",
+			"type": "text"
+		},
+		{
+			"name": "description",
+			"value": "{{selector:.Layout-sidebar p|first}}",
+			"type": "text"
+		},
+		{
+			"name": "stars",
+			"value": "{{selector:#repo-stars-counter-star?title}}",
+			"type": "number"
+		},
+		{
+			"name": "tags",
+			"value": "clippings GitHub",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://github.com"
+	],
+	"noteNameFormat": "{{date|date:YYYY-MM-DD}} - {{selector:#repo-title-component a}}",
+	"path": "Clippings"
+}

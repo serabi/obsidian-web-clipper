@@ -1,0 +1,43 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Reddit Post",
+	"behavior": "create",
+	"noteContentFormat": "> Posted in **{{selector:shreddit-post?subreddit-prefixed-name}}** by *{{selector:shreddit-post?author}}* at {{selector:shreddit-post?created-timestamp|date:\"YYYY-MM-DDTHH:mm:ssZ\"}} (⬆️ {{selector:shreddit-post?score}})\n\n\n# {{selector:shreddit-post?post-title|trim}}\n\n{{selectorHtml:shreddit-post > div[class=\"text-neutral-content\"]|markdown}}\n\n{{selector:zoomable-img > img?src|image}}\n\n## Comments ({{selector:shreddit-comment-tree?totalcomments}})\n### First Comment\n#### {{selector:shreddit-comment-tree > shreddit-comment?author|first}}:\n> {{selector:shreddit-comment-tree > shreddit-comment > div[slot=comment]|first}}",
+	"properties": [
+		{
+			"name": "url",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "title",
+			"value": "{{selector:shreddit-post?post-title|trim}}",
+			"type": "text"
+		},
+		{
+			"name": "subreddit",
+			"value": "{{selector:shreddit-post?subreddit-prefixed-name}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "clippings, reddit",
+			"type": "multitext"
+		},
+		{
+			"name": "publishedDate",
+			"value": "{{selector:shreddit-post?created-timestamp|date:\\\"YYYY-MM-DDTHH:mm:ssZ\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "created",
+			"value": "{{time|date:\\\"YYYY-MM-DDTHH:mm:ssZ\\\"}}",
+			"type": "date"
+		}
+	],
+	"triggers": [
+		"/^https:\\/\\/www.reddit.com\\/r\\/\\w+\\/comments/"
+	],
+	"noteNameFormat": "{{selector:shreddit-post?created-timestamp|date:\"YYYY-MM-DD\"}} REDDIT {{selector:shreddit-post?post-title|trim|safe_name}}",
+	"path": "Clippings"
+}
